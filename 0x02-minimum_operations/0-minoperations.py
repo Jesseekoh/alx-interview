@@ -2,24 +2,20 @@
 """0-minoperations module"""
 
 
-def minoperations(n):
-    """computes the minimum number of operations needed to result
-     in exactly n H characters"""
-    if type(n) is not int:
+def minOperations(n):
+    """Computes the minimum number of operations needed to result
+    in exactly n H characters"""
+    if n <= 1:
         return 0
-    opsCount = 0
-    clipboard = 0
-    done = 1
-    while done < n:
-        if clipboard == 0:
-            clipboard = done
-            done += clipboard
-            opsCount += 2
-        elif n - done > 0 and (n - done) % done == 0:
-            clipboard = done
-            done += clipboard
-            opsCount += 2
-        elif clipboard > 0:
-            done += clipboard
-            opsCount += 1
-    return opsCount
+
+    operations = 0
+    divisor = 2
+
+    while n > 1:
+        if n % divisor == 0:
+            operations += divisor
+            n //= divisor
+        else:
+            divisor += 1
+
+    return operations
