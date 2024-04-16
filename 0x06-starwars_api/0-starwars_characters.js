@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/node
 const util = require('node:util');
 const request = util.promisify(require('request'));
 const argv = process.argv;
